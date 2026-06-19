@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Mario Camacho">
 <title>Estudio CNDE-LM, Infecciones y costes – Estudio CNDE</title>
@@ -4136,9 +4136,9 @@ vertical-align: -.125em;
 <span class="header-section-number">6.1</span> Relación entre la prevalencia de leche materna y las infecciones</h2>
 <section id="sin-diferenciar-entre-tipo-de-infecciones-respiratorias-o-digestivas" class="level3" data-number="6.1.1"><h3 data-number="6.1.1" class="anchored" data-anchor-id="sin-diferenciar-entre-tipo-de-infecciones-respiratorias-o-digestivas">
 <span class="header-section-number">6.1.1</span> Sin diferenciar entre tipo de infecciones (respiratorias o digestivas)</h3>
-<p>La variable ‘Tipo de lactancia’ es una variable categórica de tres niveles y la variable ‘Infecciones’ es de dos niveles. No tenemos en cuenta los casos sin información del tipo de lactancia. <strong>Deberíamos imputar previamente esos valores (valorar con Esmeralda)</strong></p>
+<p>La variable ‘Tipo de lactancia’ es una variable categórica de tres niveles y la variable ‘Infecciones’ es de dos niveles. No tenemos en cuenta los casos sin información del tipo de lactancia ya que no es posible imputar estos valores.</p>
 <p><u><strong>Métodos</strong></u></p>
-<p>Se pretende evaluar si el tipo de lactancia está relacionado con la aparición de infecciones. La asociación entre el tipo de lactancia y la presencia de infecciones se midió mediante el test de la chi-cuadrado de Pearson, adecuado para variables categóricas. Se verifican los supuestos del test a partir de las frecuencias esperadas y, en caso de no cumplirse, se empleará el test exacto de Fisher. También se estima el tamaño del efecto mediante la V de Cramer, con el objetivo de cuantificar la magnitud de la asociación independientemente del tamaño muestral.</p>
+<p>Se pretende evaluar si el tipo de lactancia está relacionado con la presencia de infecciones. La asociación entre el tipo de lactancia y la presencia de infecciones se midió mediante el test de la chi-cuadrado de Pearson, adecuado para variables categóricas. Se verifican los supuestos del test a partir de las frecuencias esperadas y, en caso de no cumplirse, se empleará el test exacto de Fisher. También se estima el tamaño del efecto mediante la V de Cramer, con el objetivo de cuantificar la magnitud de la asociación independientemente del tamaño muestral.</p>
 <p><u><strong>Resultados</strong></u></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -4163,9 +4163,9 @@ Interpretación: asociación insignificante o nula</code></pre>
 </div>
 <p>El test mostró evidencia de asociación estadística (p-valor &lt; 0.001). Existe evidencia estadística de asociación entre el tipo de lactancia y la presencia de infecciones. La interpretación final debe basarse en el tamaño del efecto, ya que en muestras grandes la significación estadística puede sobreestimar la relevancia clínica del hallazgo. (<strong>Ref.</strong>) El tamaños del efecto muestra que la asociación insignificante (V de Cramer: 0.039).</p>
 <p><u><strong>Métodos</strong></u></p>
-<p>Se evalúa si la distribución del número de infecciones cambia según el tipo de lactancia. En caso de encontrar diferencias en las distribuciones se realizarán comparaciones post hoc entre pares de grupos. Dado que la variable número de infecciones es de naturaleza de conteo, no se asume a priori la normalidad de la variable y su distribución se describe a través de mediana y rango intercuartílico. Además, a los valores superiores a 5 se les asigna el 5 en la base de datos.</p>
+<p>Se pretende evaluar si el tipo de lactancia está relacionado con el número de infecciones, es decir, si la distribución del número de infecciones cambia según el tipo de lactancia. En caso de encontrar diferencias en las distribuciones se realizarán comparaciones post hoc entre pares de grupos. Dado que la variable número de infecciones es de naturaleza de conteo, no se asume a priori la normalidad de la variable y su distribución se describe a través de mediana y rango intercuartílico. Además, a los valores superiores a 5 se les asigna el 5 en la base de datos.</p>
 <p>Para evaluar la asociación de la variable de conteo número de infecciones con la variable categórica tipo de lactancia, se plantea un modelo de regresión de Poisson. A partir de este modelo se estiman los Incidence Rate Ratios (IRR) y sus intervalos de confianza al 95 %. Previamente, se comprueba el supuesto de equidispersión, es decir, que la media y la varianza de la variable de conteo sean aproximadamente iguales. En caso de detectarse sobredispersión, se emplea un modelo de regresión binomial negativa y se calculan sus IRR e intervalos de confianza al 95 %. De forma únicamente exploratoria, se emplea el test no paramétrico de Kruskal–Wallis para comparar la distribución del número de infecciones entre los grupos de lactancia.</p>
-<p>Para la construcción de los modelos estadísticos se toma como referencia para la variable tipo_lactancia el nivel Artificial.</p>
+<p>Para la construcción de los modelos estadísticos se toma como valor de referencia de la variable tipo de lactancia el nivel <code>Artificial</code>.</p>
 <p><u><strong>Resultados</strong></u></p>
 <p>Distribución de niños con y sin infecciones por año. (Más información en la pestaña ‘Análisis exploratorio’)</p>
 <div class="cell">
@@ -4177,7 +4177,7 @@ Interpretación: asociación insignificante o nula</code></pre>
 2 1                  0.054  0.044  0.017  0.047   0.034</code></pre>
 </div>
 </div>
-<p>Distribución del número de infecciones.</p>
+<p>Distribución del número de infecciones (solo aquellos casos con infecciones).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 11
@@ -4186,7 +4186,7 @@ Interpretación: asociación insignificante o nula</code></pre>
 1 0.475  0.29  0.14 0.049 0.024 0.012 0.004 0.003     0     0 0.003</code></pre>
 </div>
 </div>
-<p>Distribución del número de infecciones (a los valores mayores a 5 se les ha asignado un 5).</p>
+<p>Distribución del número de infecciones (solo aquellos casos con infecciones) cuando a los valores mayores a 5 se les asignada un 5.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
@@ -4198,20 +4198,20 @@ Interpretación: asociación insignificante o nula</code></pre>
 <p>Mediana e IQR del número de infecciones por tipo de lactancia, filtrado únicamente por aquellos casos donde el número de infecciones es mayor a 0 para minimizar la distorsión, ya que más del 90 % de los casos no tienen registros de hospitalizaicón y, por tanto, tienen cero infecciones.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="bzmzauiimw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bzmzauiimw table {
+<div id="vsktzsteyx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vsktzsteyx table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#bzmzauiimw thead, #bzmzauiimw tbody, #bzmzauiimw tfoot, #bzmzauiimw tr, #bzmzauiimw td, #bzmzauiimw th {
+#vsktzsteyx thead, #vsktzsteyx tbody, #vsktzsteyx tfoot, #vsktzsteyx tr, #vsktzsteyx td, #vsktzsteyx th {
 border-style: none;
 }
-#bzmzauiimw p {
+#vsktzsteyx p {
 margin: 0;
 padding: 0;
 }
-#bzmzauiimw .gt_table {
+#vsktzsteyx .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -4236,11 +4236,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#bzmzauiimw .gt_caption {
+#vsktzsteyx .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#bzmzauiimw .gt_title {
+#vsktzsteyx .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -4251,7 +4251,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#bzmzauiimw .gt_subtitle {
+#vsktzsteyx .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -4262,7 +4262,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#bzmzauiimw .gt_heading {
+#vsktzsteyx .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -4273,12 +4273,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#bzmzauiimw .gt_bottom_border {
+#vsktzsteyx .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bzmzauiimw .gt_col_headings {
+#vsktzsteyx .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4292,7 +4292,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#bzmzauiimw .gt_col_heading {
+#vsktzsteyx .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4311,7 +4311,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#bzmzauiimw .gt_column_spanner_outer {
+#vsktzsteyx .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4322,13 +4322,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#bzmzauiimw .gt_column_spanner_outer:first-child {
+#vsktzsteyx .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#bzmzauiimw .gt_column_spanner_outer:last-child {
+#vsktzsteyx .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#bzmzauiimw .gt_column_spanner {
+#vsktzsteyx .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -4339,10 +4339,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#bzmzauiimw .gt_spanner_row {
+#vsktzsteyx .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#bzmzauiimw .gt_group_heading {
+#vsktzsteyx .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4367,7 +4367,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#bzmzauiimw .gt_empty_group_heading {
+#vsktzsteyx .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -4381,13 +4381,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#bzmzauiimw .gt_from_md > :first-child {
+#vsktzsteyx .gt_from_md > :first-child {
 margin-top: 0;
 }
-#bzmzauiimw .gt_from_md > :last-child {
+#vsktzsteyx .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#bzmzauiimw .gt_row {
+#vsktzsteyx .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4405,7 +4405,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#bzmzauiimw .gt_stub {
+#vsktzsteyx .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4417,7 +4417,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bzmzauiimw .gt_stub_row_group {
+#vsktzsteyx .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4430,13 +4430,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#bzmzauiimw .gt_row_group_first td {
+#vsktzsteyx .gt_row_group_first td {
 border-top-width: 2px;
 }
-#bzmzauiimw .gt_row_group_first th {
+#vsktzsteyx .gt_row_group_first th {
 border-top-width: 2px;
 }
-#bzmzauiimw .gt_summary_row {
+#vsktzsteyx .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4445,14 +4445,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bzmzauiimw .gt_first_summary_row {
+#vsktzsteyx .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#bzmzauiimw .gt_first_summary_row.thick {
+#vsktzsteyx .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#bzmzauiimw .gt_last_summary_row {
+#vsktzsteyx .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4461,7 +4461,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bzmzauiimw .gt_grand_summary_row {
+#vsktzsteyx .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4470,7 +4470,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bzmzauiimw .gt_first_grand_summary_row {
+#vsktzsteyx .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4479,7 +4479,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#bzmzauiimw .gt_last_grand_summary_row_top {
+#vsktzsteyx .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4488,10 +4488,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#bzmzauiimw .gt_striped {
+#vsktzsteyx .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#bzmzauiimw .gt_table_body {
+#vsktzsteyx .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4499,7 +4499,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bzmzauiimw .gt_footnotes {
+#vsktzsteyx .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -4512,7 +4512,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#bzmzauiimw .gt_footnote {
+#vsktzsteyx .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -4520,7 +4520,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bzmzauiimw .gt_sourcenotes {
+#vsktzsteyx .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -4533,64 +4533,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#bzmzauiimw .gt_sourcenote {
+#vsktzsteyx .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bzmzauiimw .gt_left {
+#vsktzsteyx .gt_left {
 text-align: left;
 }
-#bzmzauiimw .gt_center {
+#vsktzsteyx .gt_center {
 text-align: center;
 }
-#bzmzauiimw .gt_right {
+#vsktzsteyx .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#bzmzauiimw .gt_font_normal {
+#vsktzsteyx .gt_font_normal {
 font-weight: normal;
 }
-#bzmzauiimw .gt_font_bold {
+#vsktzsteyx .gt_font_bold {
 font-weight: bold;
 }
-#bzmzauiimw .gt_font_italic {
+#vsktzsteyx .gt_font_italic {
 font-style: italic;
 }
-#bzmzauiimw .gt_super {
+#vsktzsteyx .gt_super {
 font-size: 65%;
 }
-#bzmzauiimw .gt_footnote_marks {
+#vsktzsteyx .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#bzmzauiimw .gt_asterisk {
+#vsktzsteyx .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#bzmzauiimw .gt_indent_1 {
+#vsktzsteyx .gt_indent_1 {
 text-indent: 5px;
 }
-#bzmzauiimw .gt_indent_2 {
+#vsktzsteyx .gt_indent_2 {
 text-indent: 10px;
 }
-#bzmzauiimw .gt_indent_3 {
+#vsktzsteyx .gt_indent_3 {
 text-indent: 15px;
 }
-#bzmzauiimw .gt_indent_4 {
+#vsktzsteyx .gt_indent_4 {
 text-indent: 20px;
 }
-#bzmzauiimw .gt_indent_5 {
+#vsktzsteyx .gt_indent_5 {
 text-indent: 25px;
 }
-#bzmzauiimw .katex-display {
+#vsktzsteyx .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#bzmzauiimw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vsktzsteyx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -4607,16 +4607,20 @@ height: 0px !important;
 <thead><tr class="gt_col_headings header">
 <th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
 <th id="stat_0" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">
-<strong>Overall</strong><br> N = 1,876<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+<strong>Overall</strong><br>
+N = 1,876<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
 </th>
 <th id="stat_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">
-<strong>Materna</strong><br> N = 1,034<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+<strong>Materna</strong><br>
+N = 1,034<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
 </th>
 <th id="stat_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">
-<strong>Artificial</strong><br> N = 500<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+<strong>Artificial</strong><br>
+N = 500<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
 </th>
 <th id="stat_3" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">
-<strong>Mixta</strong><br> N = 342<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+<strong>Mixta</strong><br>
+N = 342<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
 </th>
 <th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">
 <strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span>
@@ -4630,12 +4634,12 @@ height: 0px !important;
 <td class="gt_row gt_center" headers="stat_3">2.00 (1.00-2.00)</td>
 <td class="gt_row gt_center" headers="p.value"><br></td>
 </tr></tbody>
-<tfoot class="gt_footnotes">
-<tr class="odd">
+<tfoot>
+<tr class="gt_footnotes odd">
 <td colspan="6" class="gt_footnote">
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Median (Q1-Q3)</td>
 </tr>
-<tr class="even">
+<tr class="gt_footnotes even">
 <td colspan="6" class="gt_footnote">
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> NA</td>
 </tr>
@@ -4655,7 +4659,7 @@ Dispersión en los residuos del modelo: 2.43
 Debido a la sobredispersión detectada y que preveíamos, la relación se mide con un modelo de binomial negativa.</code></pre>
 </div>
 </div>
-<p>Se observó sobredispersión en la variable número de infecciones (varianza = 0.19, media = 0.08; ratio varianza/media = 2.47), lo que indica desviación del supuesto de equidispersión de la distribución de Poisson (la sobredispersión es una característica común en datos de conteo reales (<strong>Ref.</strong>). Por ello, se consideró como alternativa un modelo de regresión binomial negativa, más flexible ante la presencia de sobredispersión. (<strong>Ref.</strong>)</p>
+<p>Se observó sobredispersión en la variable número de infecciones (varianza = 0.19, media = 0.08; ratio varianza/media = 2.47), lo que indica desviación del supuesto de equidispersión de la distribución de Poisson (la sobredispersión es una característica común en datos de conteo reales (<strong>Ref.</strong>)). Por ello, se consideró como alternativa un modelo de regresión binomial negativa, más flexible ante la presencia de sobredispersión. (<strong>Ref.</strong>) De forma complementaria y con carácter exploratorio, se utilizó el test no paramétrico de Kruskal–Wallis para comparar la distribución del número de infecciones entre los grupos de lactancia.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -4672,11 +4676,8 @@ Null Deviance:      6060
 Residual Deviance: 6017     AIC: 20750</code></pre>
 </div>
 </div>
-<p>De forma complementaria y con carácter exploratorio, se utilizó el test no paramétrico de Kruskal–Wallis para comparar la distribución del número de infecciones entre los grupos de lactancia.</p>
-<p>El intercepto del modelo representa la tasa de incidencia esperada de infecciones en el grupo de referencia del tipo de lactancia. La tasa estimada fue de 0.067 infecciones por unidad de exposición (IC 95 %: 0.062 – 0.072), asumiendo un periodo de seguimiento homogéneo entre los individuos <strong>(estoy suponiendo que es un año)</strong>.</p>
-<p>El efecto de cada tipo de lactancia interpretó a través de los IRR respecto al grupo de referenca en lugar de analizar los coeficientes del modelo.</p>
-<p>Los bebés con lactancia artificial presentaron una tasa de infecciones significativamente superior a la observada en el grupo de lactancia materna (IRR = 1.601; IC 95 %: 1.386 – 1.852). Esto indica un incremento estimado del 60.1 % (IC 95 %: 38.6 % - 85.2 %). Dado que el intervalo de confianza del IRR no incluye el valor IRR = 1, la asociación resulta estadísticamente significativa.</p>
-<p>En cambio, la lactancia mixta no mostró diferencias estadísticamente significativas respecto a la lactancia materna (IRR = 1.059; IC 95 %: 0.912 – 1.232), aunque la estimación puntual sugiere un incremento del 5.9 % en la tasa de infecciones.</p>
+<p>El intercepto del modelo representa el número medio esperado de infecciones en el grupo de referencia del tipo de lactancia. La media estimada fue de 0.067 infecciones por individuo durante el pe riodo de seguimiento (IC 95 %: 0.062 – 0.072), asumiendo un periodo de seguimiento homogéneo entre los individuos <strong>(estoy suponiendo que es un año)</strong>.</p>
+<p>El efecto de cada tipo de lactancia interpretó a través de los IRR respecto al grupo de referenca en lugar de analizar directamente los coeficientes del modelo. Los bebés con lactancia artificial presentaron un número medio esperado de infecciones significativamente superior al observado en el grupo de lactancia materna (IRR = 1.601; IC 95 %: 1.386 – 1.852). Esto indica un incremento estimado del 60.1 % (IC 95 %: 38.6 % - 85.2 %) en la media esperada de infecciones. Dado que el intervalo de confianza del IRR no incluye el valor nulo de 1, la asociación resulta estadísticamente significativa. En cambio, la lactancia mixta no mostró diferencias estadísticamente significativas respecto a la lactancia materna (IRR = 1.059; IC 95 %: 0.912 – 1.232), aunque la estimación puntual sugiere un incremento del 5.9 % en la media esperada de infecciones.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                           IRR IC 2.5 IC 97.5 significativo
@@ -4693,7 +4694,7 @@ IRR:  1.601 (significativo)
 IRR &gt; 1 -&gt; efecto nocivo o de riesgo (comparado con latancia materna )
 1.386 - 1 = 0.386 ( 38.6 % más en el mejor caso)
 1.852 - 1 = 0.852 ( 85.2 % más en el peor caso)
-Aumento del 39 al 85 % en la tasa de infecciones.
+Aumento del 39 al 85 % en el número medio esperado de infecciones.
 
 
 tipo_lactanciaMixta
@@ -4701,7 +4702,7 @@ IRR:  1.059 (no significativo)
 IRR &gt; 1 -&gt; efecto nocivo o de riesgo (comparado con latancia materna )
 0.912 - 1 = -0.088 ( -8.8 % más en el mejor caso)
 1.232 - 1 = 0.232 ( 23.2 % más en el peor caso)
-Aumento del -9 al 23 % en la tasa de infecciones.</code></pre>
+Aumento del -9 al 23 % en el número medio esperado de infecciones.</code></pre>
 </div>
 </div>
 <p>De forma exploratoria, se usa el test no paramétrico de Kruskal–Wallis para comparar el número de infecciones entre los tipos de lactancia sin asumir normalidad en la variable respuesta número de infecciones. Los resultados mostraron diferencias estadísticamente significativas entre los grupos (chi-cuadrado = 72.84, gl = 2, p &lt; 0.001), lo que indica que al menos uno de los tipos de lactancia presenta una distribución del número de infecciones diferente de los demás. El tamaño del efecto estimado (epsilon^2 = 0.001) sugiere que las diferencias entre grupos, aunque estadísticamente significativas, tiene una relevancia clínica ínfima.</p>
